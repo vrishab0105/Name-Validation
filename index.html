@@ -1,0 +1,101 @@
+<html>
+    <head>
+        <title>Validation of name by Vrishab</title>
+        
+
+        <style>
+            *{font-size: 30px;}
+            body{background-color: lightgreen;}
+            p{width: 50%;
+            font-size: 20px;
+        text-align: center;}
+    
+        
+
+        
+        </style>
+    </head>
+
+    <body>
+    <center>
+        <h1>Name Validation app</h1>
+        
+        <pre><p>The Validation works in following ways:
+1.Leaving Input Empty is not allowed.
+2.Writing Only spaces is also not allowed.
+3.Numbers and special characters are not allowed.</p></pre>
+
+        <form onsubmit="valid()">
+            <input type="text" id="name" placeholder="Enter your Name"/>
+            <br/><br/>
+            <input type="submit" value="Greet"/>
+
+        </form>
+
+        <h2 id="msg"></h2>
+        <br/><br/><br/><br/><br/>
+        <h2 style="font-size: 20px; border:1px solid black; width:20%; color:red;">Guided By Kamal Sir</h2>
+    
+    </center>
+
+    <script>
+        function valid()
+        {
+            event.preventDefault();
+            let name=document.getElementById("name");
+            let msg=document.getElementById("msg");
+            let n=name.value;
+
+            if(n === "")
+            {
+                alert("Name Cannot be left empty");
+                msg.innerHTML="";
+                name.focus();
+                return;
+            }
+
+            if(n.trim() === "")
+            {
+                alert("Name cannot have only spaces.");
+                name.value="";
+                msg.innerHTML="";
+                name.focus();
+                return;
+            }
+
+            if(!n.match(/^[A-Za-z ]+$/))
+            {
+                alert("Enter Only APLHABETS not any other things.");
+                name.value="";
+                msg.innerHTML="";
+                name.focus();
+                return;
+            }
+
+            let d= new Date();
+            let hr= d.getHours();
+            
+            if(hr<12)
+            {
+                msg.innerHTML="Good Morning "+n;
+            }
+            
+            else if(hr<14)
+            {
+                msg.innerHTML="Good Afternoon "+n;
+            }
+
+            else if(hr<22)
+            {
+                msg.innerHTML="Good Evening "+n;
+            }
+
+            else
+            {
+                msg.innerHTML="Good Night "+n;
+            }
+        }
+    </script>
+        
+    </body>
+</html>
